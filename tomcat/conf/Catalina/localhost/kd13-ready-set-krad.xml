@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/kd13-ready-set-krad" docBase="../../target/kd13-ready-set-krad-1.0-SNAPSHOT">
+     <Loader reloadable="true" className="org.apache.catalina.loader.VirtualWebappLoader"
+               virtualClasspath="
+				../../target/classes;
+				"
+               searchVirtualFirst="true"/>
+</Context>
