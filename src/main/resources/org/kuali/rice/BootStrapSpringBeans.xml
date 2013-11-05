@@ -96,4 +96,8 @@
   <!--an application specific service-->
   <bean id="productService" class="org.kuali.rice.MultiplicationProductServiceImpl" />
 
+  <util:list id="jpaPackagesToScan">
+    <value>org.kuali.kd2013</value>
+  </util:list>
+
 </beans>
