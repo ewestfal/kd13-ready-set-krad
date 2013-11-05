@@ -15,6 +15,9 @@ import org.kuali.rice.krad.data.provider.annotation.Label;
 import org.kuali.rice.krad.data.provider.annotation.NonPersistentProperty;
 import org.kuali.rice.krad.data.provider.annotation.UifAutoCreateViewType;
 import org.kuali.rice.krad.data.provider.annotation.UifAutoCreateViews;
+import org.kuali.rice.krad.data.provider.annotation.UifDisplayHint;
+import org.kuali.rice.krad.data.provider.annotation.UifDisplayHintType;
+import org.kuali.rice.krad.data.provider.annotation.UifDisplayHints;
 
 @Entity
 @Table(name="KD13_CONF_SESS_T")
@@ -34,9 +37,20 @@ public class ConferenceSession {
 
 	@Column(name="START_TIME")
 	@Temporal(TemporalType.TIME)
+	@UifDisplayHints({
+		@UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_RESULT)
+		, @UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_CRITERIA)
+		, @UifDisplayHint(value=UifDisplayHintType.NO_INQUIRY)
+	})
 	protected Date startTime;
+
 	@Column(name="END_TIME")
 	@Temporal(TemporalType.TIME)
+	@UifDisplayHints({
+		@UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_RESULT)
+		, @UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_CRITERIA)
+		, @UifDisplayHint(value=UifDisplayHintType.NO_INQUIRY)
+	})
 	protected Date endTime;
 
 	@Column(length=20)
