@@ -6,29 +6,26 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="KD13_CONF_SESS_T")
+@Table(name="KD13_PRESENTER_T")
 public class PresenterInfo {
 
 	@Id
-	@Column(name="PRES_ID",precision=10)
-	protected long presenterId;
-	
-	@Column(length=40)
+	@Column(name="PRES_ID",length=10)
+	protected String presenterId;
+
+	@Column(length=40,nullable=false)
 	protected String name;
-	
+
 	@Column(length=40)
 	protected String institution;
-	
+
 	@Column(length=40)
 	protected String title;
-	
-	@Column(name="PRIMARY_IND")
-	boolean primary;
-	
-	public long getPresenterId() {
+
+	public String getPresenterId() {
 		return presenterId;
 	}
-	public void setPresenterId(long presenterId) {
+	public void setPresenterId(String presenterId) {
 		this.presenterId = presenterId;
 	}
 	public String getName() {
@@ -48,11 +45,5 @@ public class PresenterInfo {
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	public boolean isPrimary() {
-		return primary;
-	}
-	public void setPrimary(boolean primary) {
-		this.primary = primary;
 	}
 }
