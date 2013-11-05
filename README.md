@@ -106,4 +106,4 @@ mvn -U archetype:generate -DarchetypeCatalog=http://nexus.kuali.org/content/repo
 
 This will generate a new KRAD application which is configured to use MySQL with the database configuration referenced on the command line above.
 
-
+**TODO:** @kellerj fill in details here :)
