@@ -13,18 +13,21 @@ import javax.persistence.TemporalType;
 
 import org.kuali.rice.krad.data.provider.annotation.Label;
 import org.kuali.rice.krad.data.provider.annotation.NonPersistentProperty;
+import org.kuali.rice.krad.data.provider.annotation.UifAutoCreateViewType;
+import org.kuali.rice.krad.data.provider.annotation.UifAutoCreateViews;
 
 @Entity
 @Table(name="KD13_CONF_SESS_T")
+@UifAutoCreateViews({UifAutoCreateViewType.INQUIRY,UifAutoCreateViewType.LOOKUP})
 public class ConferenceSession {
 
 	@Id
 	@Column(name="SESS_ID",precision=10)
 	protected long sessionId;
-	
+
 	@Column(name="TITLE",length=60,nullable=false)
 	protected String sessionTitle;
-	
+
 	@Column(name="SESS_DATE")
 	@Temporal(TemporalType.DATE)
 	protected Date date;
@@ -35,20 +38,20 @@ public class ConferenceSession {
 	@Column(name="END_TIME")
 	@Temporal(TemporalType.TIME)
 	protected Date endTime;
-	
+
 	@Column(length=20)
 	protected String room;
-	
+
 	@Column(name="SESS_TYPE_CODE",length=4)
 	protected String sessionTypeCode;
-	
+
 	@Column(name="DESCRIPTION",length=2000)
 	protected String description;
-	
+
 	protected List<PresenterInfo> presenters;
 
 	protected static final String TIME_FORMAT = "hh:mm aa";
-	
+
 	@NonPersistentProperty
 	@Label("Time")
 	public String getDateRangeString() {
@@ -57,8 +60,8 @@ public class ConferenceSession {
 				+ " - "
 				+ ((endTime != null)?sdf.format(endTime):"");
 	}
-	
-	
+
+
 	public long getSessionId() {
 		return sessionId;
 	}
@@ -130,5 +133,5 @@ public class ConferenceSession {
 	public void setPresenters(List<PresenterInfo> presenters) {
 		this.presenters = presenters;
 	}
-	
+
 }

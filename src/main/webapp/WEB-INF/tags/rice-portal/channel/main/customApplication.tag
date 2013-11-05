@@ -26,7 +26,8 @@ This file contains custom application specific portal content.
 <div class="body">
 
   <ul class="chan">
-      <li>insert custom content here</li>
+      <li><portal:portalLink displayTitle="true" title="Conference Session Lookup" 
+      		url="${ConfigProperties.application.url}/kr-krad/lookup?methodToCall=start&dataObjectClassName=org.kuali.kd2013.dataobject.ConferenceSession&returnLocation=${ConfigProperties.application.url}/portal.do" /></li>
   </ul>
 
 </div>

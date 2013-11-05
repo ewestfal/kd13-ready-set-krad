@@ -35,12 +35,12 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-            <!--allows the supported database to be changed via parameter (ex: oracle to mysql) -->
+    <!--allows the supported database to be changed via parameter (ex: oracle to mysql) -->
     <database.groupId>mysql</database.groupId>
     <database.artifactId>${mysql.jdbc.artifactId}</database.artifactId>
     <database.version>${mysql.jdbc.version}</database.version>
     
-        <!--dependency versions -->
+    <!--dependency versions -->
     <jsp-api.version>2.1</jsp-api.version>
     <junit.version>4.11</junit.version>
     <oracle.jdbc.version>10.2.0.3.0</oracle.jdbc.version>
@@ -52,6 +52,11 @@
     <jaxb-impl.version>2.2.6</jaxb-impl.version>
     <servlet-api.version>2.5</servlet-api.version>
 
+	<impex.url>jdbc:mysql://localhost:3306/kd13rsk</impex.url>
+	<impex.username>kd13rsk</impex.username>
+	<impex.password>kd13rsk</impex.password>
+	<impex.driver>com.mysql.jdbc.Driver</impex.driver>
+	
     <!--plugin versions -->
     <!--
       It is a good idea to explicitly place plugin version numbers in a build. This makes the build
@@ -186,6 +191,56 @@
       </plugin>
 
     </plugins>
+    <pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.kuali.maven.plugins</groupId>
+				<artifactId>sql-maven-plugin</artifactId>
+				<version>1.0.10</version>
+				<configuration>
+					<username>${impex.username}</username>
+					<password>${impex.password}</password>
+					<url>${impex.url}</url>
+					<driver>${impex.driver}</driver>
+					<delimiter>/</delimiter>
+					<delimiterType>row</delimiterType>
+					<forceMojoExecution>${sql.plugin.force.execution}</forceMojoExecution>
+					<!-- <skip>${sql.plugin.skip}</skip>-->
+					<keepFormat>true</keepFormat>
+					<escapeProcessing>false</escapeProcessing>
+					<!-- <printResultSet>${sql.plugin.printResultSet}</printResultSet>
+					<outputFile>${sql.plugin.outputFile}</outputFile>
+					<orderFile>${sql.plugin.orderFile}</orderFile>
+					<enableAnonymousPassword>${sql.plugin.enableAnonymousPassword}</enableAnonymousPassword> -->
+				</configuration>
+				<executions>
+					<execution>
+						<id>setup</id>
+						<phase>none</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<url>${impex.url}</url>
+							<username>${impex.username}</username>
+							<password>${impex.password}</password>
+							<srcFiles>
+								<srcFile>src/main/config/db/001-tables.sql</srcFile>
+								<srcFile>src/main/config/db/002-data.sql</srcFile>
+							</srcFiles>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>${database.groupId}</groupId>
+						<artifactId>${database.artifactId}</artifactId>
+						<version>${database.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>    
+    </pluginManagement>
   </build>
 
   <!--
@@ -290,6 +345,51 @@
         </plugins>
       </build>
     </profile>
+
+	<profile>
+		<id>db</id>
+		<activation>
+			<activeByDefault>false</activeByDefault>
+		</activation>
+		<properties>
+			<sql.plugin.force.execution>true</sql.plugin.force.execution>
+		</properties>
+		<build>
+			<plugins>
+				<plugin>
+					<groupId>org.kuali.maven.plugins</groupId>
+					<artifactId>sql-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>setup</id>
+							<phase>install</phase>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>default-war</id>
+							<phase>none</phase>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>default-install</id>
+							<phase>none</phase>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</build>
+	</profile>
+
   </profiles>
 
   <dependencies>

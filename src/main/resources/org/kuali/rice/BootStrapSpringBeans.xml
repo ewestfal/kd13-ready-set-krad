@@ -88,6 +88,12 @@
         <value>org.kuali.kd2013</value>
       </list>
     </property>
+    <property name="initializeDataDictionary" value="true"/>
+    <property name="dataDictionaryPackages">
+      <list>
+        <value>classpath:org/kuali/kd2013/datadictionary</value>
+      </list>
+    </property>
     <property name="entityManager" ref="sharedEntityManager"/>
     <property name="providers">
       <list>
@@ -110,12 +116,6 @@
   <bean id="productService" class="org.kuali.rice.MultiplicationProductServiceImpl" />
 
     <!-- 
-    <property name="initializeDataDictionary" value="true"/>
-    <property name="dataDictionaryPackages">
-      <list>
-        <value>classpath:org/kuali/kd2013</value>
-      </list>
-    </property>
     <property name="databaseRepositoryFilePaths">
       <list>
       </list>
