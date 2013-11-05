@@ -95,9 +95,58 @@
 
   <!--an application specific service-->
   <bean id="productService" class="org.kuali.rice.MultiplicationProductServiceImpl" />
+<!-- 
+  <import resource="classpath:org/kuali/rice/core/CommonSpringBeans.xml"/>
+  <import resource="classpath:org/kuali/rice/krad/config/KRADDependentModuleCommonImports.xml" />
 
-  <util:list id="jpaPackagesToScan">
-    <value>org.kuali.kd2013</value>
-  </util:list>
+	<alias alias="kradApplicationDataSource" name="riceDataSource" />
 
+	<bean id="jpaPersistenceUnitName" class="java.lang.String">
+		<constructor-arg value="ready-set-krad" />
+	</bean>
+
+	<util:list id="jpaPackagesToScan">
+		<value>org.kuali.kd2013</value>
+	</util:list>
+	<util:list id="managedClassNames" />
+	<util:list id="additionalMetadataProviders" />
+	<util:list id="springMetadataFileLocations" />
+
+	<import resource="classpath:org/kuali/rice/krad/config/KRADSpringBeans-jpa-common.xml" />
+	
+  <bean id="kradSampleAppModuleConfiguration" class="org.kuali.rice.krad.bo.ModuleConfiguration">
+    <property name="namespaceCode" value="KR-RSK"/>
+    <property name="initializeDataDictionary" value="true"/>
+    <property name="dataDictionaryPackages">
+      <list>
+        <value>classpath:org/kuali/kd2013</value>
+      </list>
+    </property>
+    <property name="databaseRepositoryFilePaths">
+      <list>
+      </list>
+    </property>
+    <property name="packagePrefixes">
+      <list>
+        <value>org.kuali.kd2013</value>
+      </list>
+    </property>
+    <property name="resourceBundleNames">
+      <list>
+      </list>
+    </property>
+    <property name="entityManager" ref="sharedEntityManager"/>
+    <property name="providers">
+      <list>
+        <ref bean="jpaPersistenceProvider"/>
+        <ref bean="metadataProvider"/>
+      </list>
+    </property>
+  </bean>
+
+  <bean id="kradSampleAppModuleService" class="org.kuali.rice.krad.service.impl.ModuleServiceBase">
+    <property name="moduleConfiguration" ref="kradSampleAppModuleConfiguration"/>
+  </bean>
+ -->
+	
 </beans>
