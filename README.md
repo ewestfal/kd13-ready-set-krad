@@ -5,19 +5,37 @@ Example projects for Ready, Set, KRAD! at Kuali Days 2013
 
 The following instructions take you through what setup you need in order to run this project, as well as how to recreate it as per the "Ready, Set, KRAD!" session at Kuali Days 2013.
 
-Setup:
+## Setup
 
-- Install and load database
--- Install MySQL 5.6.x
--- Checkout "Ready, Set, KRAD!" Kuali Rice version from SVN:
---- svn co http://svn.kuali.org/repos/rice/sandbox/ready-set-krad
---- This is a special version of Rice 2.4 milestone 3 with some fixes that were made for the purposes of this presentation
--- Change directory into master database and run impex import:
---- d db/impex/master/
---- mvn clean install -Pdb,mysql -Dimpex.username=kd13rsk -Dimpex.password=kd13rsk -Dimpex.dba.password=NONE -Dimpex.database=kd13rsk
---- Alter the above depending on what your MySQL dba or "root" password is
-- Install maven 3
--- need something like the following in your settings.xml since we are working with snapshots
+### Install and Load database
+
+* Install MySQL 5.5.x or 5.6.x - <http://dev.mysql.com/downloads/mysql/>
+* Checkout "Ready, Set, KRAD!" Kuali Rice version from SVN using your IDE or the SVN command line: `svn co http://svn.kuali.org/repos/rice/sandbox/ready-set-krad`
+	* This is a special version of Rice 2.4 milestone 3 with some fixes that were made for the purposes of this presentation
+* Change directory into the location of the "master" database and run an impex import (be sure to type the "mvn" command all on one line!):
+
+```
+cd db/impex/master/
+mvn clean install -Pdb,mysql -Dimpex.username=kd13rsk -Dimpex.password=kd13rsk -Dimpex.dba.password=NONE -Dimpex.database=kd13rsk
+```
+* Alter the above depending on what your MySQL dba or "root" password is
+* When this completes you should see a message indicating that the database import was a success.
+
+### Install Maven
+
+* Download and install Maven 3 - <http://maven.apache.org>
+* We will be working with a SNAPSHOT version of Rice, so we need to make sure our settings are configured such that we can download from the Kuali snapshots repository
+* Open the ~/.m2/settings.xml file in a text editor (or create it if it does not exist)
+* Ensure that you have a default activated profile defined which adds the Kuali snapshot repository as an available repository:
+
+```
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+                      
+  ...
+  
   <profiles>
     <profile>
       <activation>
@@ -27,10 +45,18 @@ Setup:
         <repository>
           <id>Kuali-Snapshot</id>
           <url>http://nexus.kuali.org/content/repositories/kuali-snapshot</url>
-        </repository>
-      </repositories>
-   </profiles>
-- install java 7
+       </repository>
+     </repositories>
+  </profiles>
+  
+</settings>
+```
+
+### Install Java 7
+
+* Download and install the latest Java SE 7 version and install it
+* <http://www.oracle.com/technetwork/java/javase/downloads/index.html?ssSourceSiteId=ocomen>
+
 - install Tomcat 7
 -- put spring tomcat instrument and mysql connector jars in lib directory
 - install eclipse version 4.3.1, j2ee version, kepler
