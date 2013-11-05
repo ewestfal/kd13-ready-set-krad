@@ -69,37 +69,41 @@ mvn clean install -Pdb,mysql -Dimpex.username=kd13rsk -Dimpex.password=kd13rsk -
 * Launch Eclipse and point it to a workspace location of your choosing if prompted
 * Navigate to `Window -> Show Views -> Servers` to bring up the "Servers" view.
 * Click the link in this view to create a new server
-* Select "Apache -> Tomcat v7.0 Server" then click "Next"
+* Select `Apache -> Tomcat v7.0 Server` then click "Next"
 * Browse for where you uninstall your Tomcat server, then click "Finish"
 * Double-click on the newly created server in the Servers view in order to bring up the editor for the Tomcat server configuration
 * Click "Open Launch Configuration", go to the "Arguments" tab, and then enter `-Xmx512m -XX:MaxPermSize=256m` to the end of the "VM Arguments".
 	* This increases the amount of memory given to the Java virtual machine that runs the Tomcat serfer
-* Back on the editor for your Tomcat server, under "Timeouts" change the start timeout from "45" to "300"
-* Now save the Tomcat server configuration ("File -> Save") and close the editor pane
+* Back on the editor for your Tomcat server, under "Timeouts" change the start timeout from `45` to `300`
+* Now save the Tomcat server configuration (`File -> Save`) and close the editor pane
 
 
 
 ## Running this Project
 
-* TODO...
+* Clone the project from GitHub: `git clone https://github.com/ewestfal/kd13-ready-set-krad.git`
+* Open Eclipse
+* Import the project into Eclipse by going to `File -> Import…` and then navigating to `Maven -> Existing Maven Projects`.
+* Find the `kd13-ready-set-krad` project and import it
+* **Note:** You may see some validation-related errors after the project builds. These can be ingnored. Additionally, you may see a couple of JAX-RS related errors which can also be ignored. They will look like the following:
+	* `JAX-RS (REST Web Services) 2.0 can not be installed : One or more constraints have not been satisfied.`
+	* `JAX-RS (REST Web Services) 2.0 requires Java 1.7 or newer.`
+* Once imported, open the "Servers" view by going to `Window -> Show Views -> Servers`
+* Click-and-drag the `kd13-ready-set-krad` project to the Tomcat server you set up in the servers view during the setup instructions.
+* Start the Tomcat server from the Servers view
+* After startup, navigate to the main page by going to <http://localhost:8080/kd13-ready-set-krad>
+* Log in as the `admin` user and you should see the application portal!
 
-## Steps to Recreate
+## Steps to Recreate this Project
 
-* TODO...
+### Using the Kuali Rice "Quickstart" Archetype
 
-- Execute the Kuali Rice "quickstart" archetype
--- mvn -U archetype:generate -DarchetypeCatalog=http://nexus.kuali.org/content/repositories/kuali-snapshot/ -DarchetypeGroupId=org.kuali.rice -DarchetypeArtifactId=rice-archetype-quickstart -DarchetypeVersion=2.4.0-M3-kd2013-SNAPSHOT -Ddatasource_ojb_platform=MySQL -Ddatasource_password=kd13rsk -Ddatasource_url=jdbc:mysql://localhost:3306/kd13rsk -Ddatasource_username=kd13rsk
-- Next up, we import into Eclipse... (verison 4.3.1, j2ee version, kepler)
-- Open Eclipse
-- File -> Import...
-- Maven -> Existing Maven Projects
-- Find kd13-ready-set-krad project and import it
-- open servers view, click and drag project into tomcat server
-- launch tomcat server
-- after startup, navigate to main page and login with "admin", http://localhost:8080/kd13-ready-set-krad
-- you will see two errors after it builds (these can be ignored, appears to be a bug)
--- Description	Resource	Path	Location	Type
-JAX-RS (REST Web Services) 2.0 can not be installed : One or more constraints have not been satisfied.	kd13-ready-set-krad		line 1	Maven Java EE Configuration Problem
--- Description	Resource	Path	Location	Type
-JAX-RS (REST Web Services) 2.0 requires Java 1.7 or newer.	kd13-ready-set-krad		line 1	Maven Java EE Configuration Problem
-- TODO! Jonathan fill in here ;)
+To create the initial project structure, use the Kuali Rice "Quickstart" archetype. To do this, execute the following maven command from the command line. You'll want to do this from inside of a directory where you want your project to be generated:
+
+```
+mvn -U archetype:generate -DarchetypeCatalog=http://nexus.kuali.org/content/repositories/kuali-snapshot/ -DarchetypeGroupId=org.kuali.rice -DarchetypeArtifactId=rice-archetype-quickstart -DarchetypeVersion=2.4.0-M3-kd2013-SNAPSHOT -Ddatasource_ojb_platform=MySQL -Ddatasource_password=kd13rsk -Ddatasource_url=jdbc:mysql://localhost:3306/kd13rsk -Ddatasource_username=kd13rsk
+```
+
+This will generate a new KRAD application which is configured to use MySQL with the database configuration referenced on the command line above.
+
+
