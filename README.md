@@ -57,17 +57,35 @@ mvn clean install -Pdb,mysql -Dimpex.username=kd13rsk -Dimpex.password=kd13rsk -
 * Download and install the latest Java SE 7 version and install it
 * <http://www.oracle.com/technetwork/java/javase/downloads/index.html?ssSourceSiteId=ocomen>
 
-- install Tomcat 7
--- put spring tomcat instrument and mysql connector jars in lib directory
-- install eclipse version 4.3.1, j2ee version, kepler
--- setup "servers" view with Tomcat 7
---- be sure to give tomcat more memory!  -Xmx512m -XX:MaxPermSize=256m
---- increase timeout to 300 seconds
+### Install Tomcat 7 and Supporting Jars
+
+* Download the "Core" zip distribution of Tomcat 7 and extract it to a directory of your choice: <http://tomcat.apache.org/download-70.cgi>
+* Download the MySQL JDBC driver and copy it to the "lib" directory of your extracted Tomcat distribution: <http://search.maven.org/remotecontent?filepath=mysql/mysql-connector-java/5.1.26/mysql-connector-java-5.1.26.jar>
+* Download the Tomcat Spring Instrumentation jar and copy it to the "lib" directory of your extracted Tomcat distribution: <http://search.maven.org/remotecontent?filepath=org/springframework/spring-instrument-tomcat/3.2.3.RELEASE/spring-instrument-tomcat-3.2.3.RELEASE.jar>
+
+### Install Eclipse and Configure Tomcat Server
+
+* Download "Eclipse IDE for Java EE Developers" version 4.3 (Kepler) and extract to a location of your choice. Will be the second link on the following page (and the first link under "Package Solutions"): <http://eclipse.org/downloads/> install eclipse version 4.3.1, j2ee version, kepler
+* Launch Eclipse and point it to a workspace location of your choosing if prompted
+* Navigate to `Window -> Show Views -> Servers` to bring up the "Servers" view.
+* Click the link in this view to create a new server
+* Select "Apache -> Tomcat v7.0 Server" then click "Next"
+* Browse for where you uninstall your Tomcat server, then click "Finish"
+* Double-click on the newly created server in the Servers view in order to bring up the editor for the Tomcat server configuration
+* Click "Open Launch Configuration", go to the "Arguments" tab, and then enter `-Xmx512m -XX:MaxPermSize=256m` to the end of the "VM Arguments".
+	* This increases the amount of memory given to the Java virtual machine that runs the Tomcat serfer
+* Back on the editor for your Tomcat server, under "Timeouts" change the start timeout from "45" to "300"
+* Now save the Tomcat server configuration ("File -> Save") and close the editor pane
 
 
-Running the Project:
 
-To recreate this project, follow these steps:
+## Running this Project
+
+* TODO...
+
+## Steps to Recreate
+
+* TODO...
 
 - Execute the Kuali Rice "quickstart" archetype
 -- mvn -U archetype:generate -DarchetypeCatalog=http://nexus.kuali.org/content/repositories/kuali-snapshot/ -DarchetypeGroupId=org.kuali.rice -DarchetypeArtifactId=rice-archetype-quickstart -DarchetypeVersion=2.4.0-M3-kd2013-SNAPSHOT -Ddatasource_ojb_platform=MySQL -Ddatasource_password=kd13rsk -Ddatasource_url=jdbc:mysql://localhost:3306/kd13rsk -Ddatasource_username=kd13rsk
