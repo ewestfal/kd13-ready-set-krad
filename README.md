@@ -85,10 +85,14 @@ mvn clean install -Pdb,mysql -Dimpex.username=kd13rsk -Dimpex.password=kd13rsk -
 * Open Eclipse
 * Import the project into Eclipse by going to `File -> Import…` and then navigating to `Maven -> Existing Maven Projects`.
 * Find the `kd13-ready-set-krad` project and import it
-* **Note:** You may see some validation-related errors after the project builds. These can be ingnored. Additionally, you may see a couple of JAX-RS related errors which can also be ignored. They will look like the following:
+* **Note:** You may see some validation-related errors after the project builds. These can be ignored. Additionally, you may see a couple of JAX-RS related errors which can also be ignored. They will look like the following:
 	* `JAX-RS (REST Web Services) 2.0 can not be installed : One or more constraints have not been satisfied.`
 	* `JAX-RS (REST Web Services) 2.0 requires Java 1.7 or newer.`
-* Once imported, open the "Servers" view by going to `Window -> Show Views -> Servers`
+* Open the project tree.  Right click on the `setup_database.launch` file and select Run As...
+	* Select `setup_database` and wait for the process to complete.
+	* This will install the supporting tables and data for the demo.
+	* This step is just running `mvn -P db` from the command line.  For reference, the scripts being run are in the `src/main/config/db` directory.
+* Open the "Servers" view by going to `Window -> Show Views -> Servers`
 * Click-and-drag the `kd13-ready-set-krad` project to the Tomcat server you set up in the servers view during the setup instructions.
 * Start the Tomcat server from the Servers view
 * After startup, navigate to the main page by going to <http://localhost:8080/kd13-ready-set-krad>
