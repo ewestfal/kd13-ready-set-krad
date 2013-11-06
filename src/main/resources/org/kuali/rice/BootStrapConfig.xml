@@ -28,7 +28,7 @@ in configuration files outside of the project.
 <config>
   <param name="config.location">classpath:org/kuali/rice/standalone/config/standalone-config-defaults.xml</param>
 
-  <param name="rice.logging.configure">true</param>
+  <param name="rice.logging.configure">false</param>
 
   <param name="module.name">kd13-ready-set-krad</param>
   <param name="application.id">kd13-ready-set-krad</param>

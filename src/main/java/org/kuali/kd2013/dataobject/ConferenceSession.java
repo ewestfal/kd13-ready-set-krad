@@ -10,6 +10,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -17,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.kuali.rice.krad.data.jpa.eclipselink.PortableSequenceGenerator;
 import org.kuali.rice.krad.data.provider.annotation.KeyValuesFinderClass;
 import org.kuali.rice.krad.data.provider.annotation.Label;
 import org.kuali.rice.krad.data.provider.annotation.NonPersistentProperty;
@@ -34,6 +36,8 @@ public class ConferenceSession implements Serializable {
 
 	@Id
 	@Column(name="SESS_ID",length=10)
+	@GeneratedValue(generator="KD13_CONF_SESS_ID_S")
+	@PortableSequenceGenerator(name="KD13_CONF_SESS_ID_S")
 	protected String sessionId;
 
 	@Column(name="TITLE",length=60,nullable=false)
@@ -64,6 +68,7 @@ public class ConferenceSession implements Serializable {
 	// Positioned here since properties are processed in order found
 	@NonPersistentProperty
 	@Label("Time")
+	//@UifDisplayHints({@UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_CRITERIA)})
 	public String getDateRangeString() {
 		SimpleDateFormat sdf = new SimpleDateFormat(TIME_FORMAT);
 		return ((startTime != null)?sdf.format(startTime):"")
@@ -81,11 +86,12 @@ public class ConferenceSession implements Serializable {
 	@Column(name="DESCRIPTION",length=2000)
 	protected String description;
 
-	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	@JoinColumn(name="SESS_ID",referencedColumnName="SESS_ID")
 	protected List<SessionPresenter> presenters = new ArrayList<SessionPresenter>();
 
 	@NonPersistentProperty
+	//@UifDisplayHints({@UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_CRITERIA)})
 	public String getPresenterNames() {
 		StringBuilder sb = new StringBuilder();
 		if ( presenters != null ) {

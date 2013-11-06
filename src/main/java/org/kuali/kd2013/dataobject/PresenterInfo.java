@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.kuali.rice.krad.data.jpa.eclipselink.PortableSequenceGenerator;
+import org.kuali.rice.krad.data.provider.annotation.Label;
 import org.kuali.rice.krad.data.provider.annotation.UifAutoCreateViewType;
 import org.kuali.rice.krad.data.provider.annotation.UifAutoCreateViews;
 
@@ -18,6 +21,8 @@ public class PresenterInfo implements Serializable {
 
 	@Id
 	@Column(name="PRES_ID",length=10)
+	@GeneratedValue(generator="KD13_PRESENTER_ID_S")
+	@PortableSequenceGenerator(name="KD13_PRESENTER_ID_S")
 	protected String presenterId;
 
 	@Column(length=40,nullable=false)
@@ -27,6 +32,7 @@ public class PresenterInfo implements Serializable {
 	protected String institution;
 
 	@Column(length=40)
+	@Label("Title")
 	protected String title;
 
 	public String getPresenterId() {

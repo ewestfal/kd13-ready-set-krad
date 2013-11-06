@@ -6,11 +6,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.kuali.rice.krad.data.jpa.eclipselink.PortableSequenceGenerator;
 import org.kuali.rice.krad.data.provider.annotation.InheritProperties;
 import org.kuali.rice.krad.data.provider.annotation.InheritProperty;
 import org.kuali.rice.krad.data.provider.annotation.Label;
@@ -22,6 +24,8 @@ public class SessionPresenter implements Serializable {
 
 	@Id
 	@Column(name="SESS_PRES_ID",length=10)
+	@GeneratedValue(generator="KD13_SESS_PRES_ID_S")
+	@PortableSequenceGenerator(name="KD13_SESS_PRES_ID_S")
 	protected String sessionPresenterId;
 
 	@Column(name="SESS_ID",length=10)
