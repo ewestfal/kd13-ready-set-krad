@@ -48,7 +48,7 @@
 					<property name="headerText" value="Session Information" />
 					<property name="items">
 						<list>
-							<bean parent="Uif-InputField" p:propertyName="sessionId" />
+							<bean parent="Uif-InputField" p:propertyName="sessionId" p:readOnly="true" />
 							<bean parent="Uif-InputField" p:propertyName="sessionTitle" />
 							<bean parent="Uif-InputField" p:propertyName="date" />
 							<bean parent="Uif-InputField" p:propertyName="startTime" />
