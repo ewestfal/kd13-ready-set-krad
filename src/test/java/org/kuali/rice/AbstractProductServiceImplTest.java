@@ -18,6 +18,7 @@ package org.kuali.rice;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import org.kuali.kd2013.dataobject.service.ProductService;
 
 import static org.junit.Assert.*;
 

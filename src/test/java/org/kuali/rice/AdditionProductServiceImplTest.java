@@ -15,6 +15,9 @@
  */
 package org.kuali.rice;
 
+import org.kuali.kd2013.dataobject.service.ProductService;
+import org.kuali.kd2013.dataobject.service.impl.AdditionProductServiceImpl;
+
 /**
  * Kuali Rice ArcheType Help
  *
