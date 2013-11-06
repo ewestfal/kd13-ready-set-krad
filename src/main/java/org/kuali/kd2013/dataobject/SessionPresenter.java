@@ -17,7 +17,6 @@ public class SessionPresenter {
 	@Column(name="SESS_PRES_ID",length=10)
 	protected String sessionPresenterId;
 
-
 	@Column(name="SESS_ID",length=10)
 	protected String sessionId;
 
@@ -30,6 +29,15 @@ public class SessionPresenter {
 	@ManyToOne(fetch=FetchType.EAGER,cascade={CascadeType.REFRESH,CascadeType.DETACH})
 	@JoinColumn(name="PRES_ID",referencedColumnName="PRES_ID",updatable=false,insertable=false)
 	protected PresenterInfo presenter;
+
+
+	public String getSessionPresenterId() {
+		return sessionPresenterId;
+	}
+
+	public void setSessionPresenterId(String sessionPresenterId) {
+		this.sessionPresenterId = sessionPresenterId;
+	}
 
 	public String getSessionId() {
 		return sessionId;
