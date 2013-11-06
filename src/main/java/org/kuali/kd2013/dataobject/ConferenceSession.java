@@ -1,5 +1,6 @@
 package org.kuali.kd2013.dataobject;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,7 +29,8 @@ import org.kuali.rice.krad.data.provider.annotation.UifDisplayHints;
 @Entity
 @Table(name="KD13_CONF_SESS_T")
 @UifAutoCreateViews({UifAutoCreateViewType.INQUIRY,UifAutoCreateViewType.LOOKUP})
-public class ConferenceSession {
+public class ConferenceSession implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="SESS_ID",length=10)

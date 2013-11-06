@@ -1,5 +1,7 @@
 package org.kuali.kd2013.dataobject;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,9 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.kuali.rice.krad.data.provider.annotation.InheritProperties;
+import org.kuali.rice.krad.data.provider.annotation.InheritProperty;
+import org.kuali.rice.krad.data.provider.annotation.Label;
+
 @Entity
 @Table(name="KD13_SESS_PRES_T")
-public class SessionPresenter {
+public class SessionPresenter implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="SESS_PRES_ID",length=10)
@@ -28,6 +35,9 @@ public class SessionPresenter {
 
 	@ManyToOne(fetch=FetchType.EAGER,cascade={CascadeType.REFRESH,CascadeType.DETACH})
 	@JoinColumn(name="PRES_ID",referencedColumnName="PRES_ID",updatable=false,insertable=false)
+	@InheritProperties({ 
+			@InheritProperty(name = "name",label = @Label("Presenter Name")),
+			@InheritProperty(name = "institution")})
 	protected PresenterInfo presenter;
 
 

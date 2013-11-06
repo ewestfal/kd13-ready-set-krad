@@ -1,13 +1,20 @@
 package org.kuali.kd2013.dataobject;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.kuali.rice.krad.data.provider.annotation.UifAutoCreateViewType;
+import org.kuali.rice.krad.data.provider.annotation.UifAutoCreateViews;
+
 @Entity
 @Table(name="KD13_PRESENTER_T")
-public class PresenterInfo {
+@UifAutoCreateViews({UifAutoCreateViewType.INQUIRY,UifAutoCreateViewType.LOOKUP})
+public class PresenterInfo implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="PRES_ID",length=10)
