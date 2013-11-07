@@ -1,7 +1,6 @@
 package org.kuali.kd2013.dataobject;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.apache.commons.lang.StringUtils;
 import org.kuali.rice.krad.data.jpa.eclipselink.PortableSequenceGenerator;
 import org.kuali.rice.krad.data.provider.annotation.KeyValuesFinderClass;
 import org.kuali.rice.krad.data.provider.annotation.Label;
@@ -47,33 +47,34 @@ public class ConferenceSession implements Serializable {
 	@Temporal(TemporalType.DATE)
 	protected Date date;
 
-	@Column(name="START_TIME")
-	@Temporal(TemporalType.TIME)
+	@Column(name="START_TIME",length=8)
 	@UifDisplayHints({
 		@UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_RESULT)
 		, @UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_CRITERIA)
 		, @UifDisplayHint(value=UifDisplayHintType.NO_INQUIRY)
 	})
-	protected Date startTime;
+	protected String startTime;
 
-	@Column(name="END_TIME")
-	@Temporal(TemporalType.TIME)
+	@Column(name="END_TIME",length=8)
 	@UifDisplayHints({
 		@UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_RESULT)
 		, @UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_CRITERIA)
 		, @UifDisplayHint(value=UifDisplayHintType.NO_INQUIRY)
 	})
-	protected Date endTime;
+	protected String endTime;
 
 	// Positioned here since properties are processed in order found
 	@NonPersistentProperty
 	@Label("Time")
 	//@UifDisplayHints({@UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_CRITERIA)})
 	public String getDateRangeString() {
-		SimpleDateFormat sdf = new SimpleDateFormat(TIME_FORMAT);
-		return ((startTime != null)?sdf.format(startTime):"")
+//		SimpleDateFormat sdf = new SimpleDateFormat(TIME_FORMAT);
+//		return ((startTime != null)?sdf.format(startTime):"")
+//				+ " - "
+//				+ ((endTime != null)?sdf.format(endTime):"");
+		return StringUtils.trimToEmpty(startTime)
 				+ " - "
-				+ ((endTime != null)?sdf.format(endTime):"");
+				+ StringUtils.trimToEmpty(endTime);
 	}
 
 	@Column(length=20)
@@ -103,7 +104,7 @@ public class ConferenceSession implements Serializable {
 		return sb.toString();
 	}
 
-	protected static final String TIME_FORMAT = "hh:mm aa";
+//	protected static final String TIME_FORMAT = "hh:mm aa";
 
 	public String getSessionId() {
 		return sessionId;
@@ -127,22 +128,6 @@ public class ConferenceSession implements Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	public Date getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-
-	public Date getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
 	}
 
 	public String getRoom() {
@@ -175,6 +160,22 @@ public class ConferenceSession implements Serializable {
 
 	public void setPresenters(List<SessionPresenter> presenters) {
 		this.presenters = presenters;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 
 }
