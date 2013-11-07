@@ -105,9 +105,28 @@ mvn clean install -Pdb,mysql -Dimpex.username=kd13rsk -Dimpex.password=kd13rsk -
 To create the initial project structure, use the Kuali Rice "Quickstart" archetype. To do this, execute the following maven command from the command line. You'll want to do this from inside of a directory where you want your project to be generated:
 
 ```
-mvn -U archetype:generate -DarchetypeCatalog=http://nexus.kuali.org/content/repositories/kuali-snapshot/ -DarchetypeGroupId=org.kuali.rice -DarchetypeArtifactId=rice-archetype-quickstart -DarchetypeVersion=2.4.0-M3-kd2013-SNAPSHOT -Ddatasource_ojb_platform=MySQL -Ddatasource_password=kd13rsk -Ddatasource_url=jdbc:mysql://localhost:3306/kd13rsk -Ddatasource_username=kd13rsk
+mvn -U archetype:generate \
+-DarchetypeCatalog=http://nexus.kuali.org/content/repositories/kuali-snapshot/ \
+-DarchetypeGroupId=org.kuali.rice \
+-DarchetypeArtifactId=rice-archetype-quickstart \
+-DarchetypeVersion=2.4.0-M3-kd2013-SNAPSHOT \
+-DgroupId=org.kuali.kd2013 \
+-DartifactId=kd13-ready-set-krad \
+-Dversion=1.0-SNAPSHOT \
+-Ddatasource_ojb_platform=MySQL \
+-Ddatasource_url=jdbc:mysql://localhost:3306/kd13rsk \
+-Ddatasource_username=kd13rsk \
+-Ddatasource_password=kd13rsk
 ```
 
 This will generate a new KRAD application which is configured to use MySQL with the database configuration referenced on the command line above.
 
 **TODO:** @kellerj fill in details here :)
+
+* Addition of module and JPA configuration. (should be moved to archetype)
+* Building of the base database.
+* Creation of the custom tables.
+* Creation of the data objects and values finder.
+	* Annotation of the above
+* Data dictionary configuration for the data objects.  (Enables lookups and inquiries.)
+* Maintenance document XML setup.
