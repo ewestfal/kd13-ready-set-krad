@@ -208,9 +208,9 @@
 					<forceMojoExecution>${sql.plugin.force.execution}</forceMojoExecution>
 					<keepFormat>true</keepFormat>
 					<escapeProcessing>false</escapeProcessing>
+					<enableAnonymousPassword>true</enableAnonymousPassword>
 				</configuration>
 				<executions>
-					<!-- 
 					<execution>
 						<id>setup-base-rice-db</id>
 						<phase>none</phase>
@@ -228,7 +228,6 @@
 							</srcFiles>
 						</configuration>
 					</execution>
-					 -->
 					<execution>
 						<id>setup</id>
 						<phase>none</phase>
@@ -375,10 +374,10 @@
 					<groupId>org.kuali.maven.plugins</groupId>
 					<artifactId>sql-maven-plugin</artifactId>
 					<executions>
-						<!-- <execution>
+						<execution>
 							<id>setup-base-rice-db</id>
 							<phase>install</phase>
-						</execution>  -->
+						</execution>
 						<execution>
 							<id>setup</id>
 							<phase>install</phase>
