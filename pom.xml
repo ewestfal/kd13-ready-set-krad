@@ -52,10 +52,14 @@
     <jaxb-impl.version>2.2.6</jaxb-impl.version>
     <servlet-api.version>2.5</servlet-api.version>
 
-	<impex.url>jdbc:mysql://localhost:3306/kd13rsk</impex.url>
-	<impex.username>kd13rsk</impex.username>
-	<impex.password>kd13rsk</impex.password>
 	<impex.driver>com.mysql.jdbc.Driver</impex.driver>
+	<impex.dba.username>root</impex.dba.username>
+	<impex.dba.password>NONE</impex.dba.password>
+	<impex.dba.url>jdbc:mysql://localhost:3306</impex.dba.url>
+
+	<impex.username>kd13rsk</impex.username>
+	<impex.password>${impex.username}</impex.password>
+	<impex.url>${impex.dba.url}/${impex.username}</impex.url>
 	
     <!--plugin versions -->
     <!--
@@ -198,22 +202,33 @@
 				<artifactId>sql-maven-plugin</artifactId>
 				<version>1.0.10</version>
 				<configuration>
-					<username>${impex.username}</username>
-					<password>${impex.password}</password>
-					<url>${impex.url}</url>
 					<driver>${impex.driver}</driver>
 					<delimiter>/</delimiter>
 					<delimiterType>row</delimiterType>
 					<forceMojoExecution>${sql.plugin.force.execution}</forceMojoExecution>
-					<!-- <skip>${sql.plugin.skip}</skip>-->
 					<keepFormat>true</keepFormat>
 					<escapeProcessing>false</escapeProcessing>
-					<!-- <printResultSet>${sql.plugin.printResultSet}</printResultSet>
-					<outputFile>${sql.plugin.outputFile}</outputFile>
-					<orderFile>${sql.plugin.orderFile}</orderFile>
-					<enableAnonymousPassword>${sql.plugin.enableAnonymousPassword}</enableAnonymousPassword> -->
 				</configuration>
 				<executions>
+					<!-- 
+					<execution>
+						<id>setup-base-rice-db</id>
+						<phase>none</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<delimiter>;</delimiter>
+							<delimiterType>normal</delimiterType>
+							<url>${impex.dba.url}</url>
+							<username>${impex.dba.username}</username>
+							<password>${impex.dba.password}</password>
+							<srcFiles>
+								<srcFile>src/main/config/db/000-rice-2.4.0-m3.sql</srcFile>
+							</srcFiles>
+						</configuration>
+					</execution>
+					 -->
 					<execution>
 						<id>setup</id>
 						<phase>none</phase>
@@ -221,9 +236,9 @@
 							<goal>execute</goal>
 						</goals>
 						<configuration>
-							<url>${impex.url}</url>
 							<username>${impex.username}</username>
 							<password>${impex.password}</password>
+							<url>${impex.url}</url>
 							<srcFiles>
 								<srcFile>src/main/config/db/001-tables.sql</srcFile>
 								<srcFile>src/main/config/db/002-data.sql</srcFile>
@@ -360,6 +375,10 @@
 					<groupId>org.kuali.maven.plugins</groupId>
 					<artifactId>sql-maven-plugin</artifactId>
 					<executions>
+						<!-- <execution>
+							<id>setup-base-rice-db</id>
+							<phase>install</phase>
+						</execution>  -->
 						<execution>
 							<id>setup</id>
 							<phase>install</phase>
