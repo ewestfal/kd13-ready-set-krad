@@ -34,7 +34,7 @@ This file contains custom application specific web.xml content.
 
   <context-param>
     <param-name>web.bootstrap.spring.file</param-name>
-    <param-value>classpath:org/kuali/rice/BootStrapSpringBeans.xml</param-value>
+    <param-value>classpath:org/kuali/kd2013/BootStrapSpringBeans.xml</param-value>
   </context-param>
 
   <filter>

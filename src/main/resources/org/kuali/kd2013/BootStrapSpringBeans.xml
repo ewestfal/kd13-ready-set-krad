@@ -42,7 +42,7 @@
 	<bean id="bootstrapConfig" class="org.kuali.rice.core.impl.config.property.ConfigFactoryBean">
 		<property name="configLocations">
 			<list>
-				<value>classpath:org/kuali/rice/BootStrapConfig.xml</value>
+				<value>classpath:org/kuali/kd2013/BootStrapConfig.xml</value>
 			</list>
 		</property>
 	</bean>
