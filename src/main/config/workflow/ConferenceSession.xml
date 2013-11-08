@@ -2,9 +2,9 @@
 <data xmlns="ns:workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ns:workflow resource:WorkflowData">
   <documentTypes xmlns="ns:workflow/DocumentType" xsi:schemaLocation="ns:workflow/DocumentType resource:DocumentType">
     <documentType>
-      <name>ConferenceSession</name>
+      <name></name>
+      <label></label>
       <parent>RiceDocument</parent>
-      <label>Conference Session</label>
       <docHandler>${kr.krad.url}/maintenance?methodToCall=docHandler</docHandler>
       <active>true</active>
       <routingVersion>2</routingVersion>
