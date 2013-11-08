@@ -22,14 +22,16 @@ This file contains custom application specific portal content.
 
 <%@ include file="/rice-portal/jsp/sys/riceTldHeader.jsp" %>
 
-<channel:portalChannelTop channelTitle="kd13-ready-set-krad"/>
+<channel:portalChannelTop channelTitle="Kuali Days 2013 - Ready, Set, KRAD!"/>
 <div class="body">
 
   <ul class="chan">
+  <%--
       <li><portal:portalLink displayTitle="true" title="Conference Session Lookup" 
       		url="${ConfigProperties.application.url}/kr-krad/lookup?methodToCall=start&dataObjectClassName=org.kuali.kd2013.dataobject.ConferenceSession&returnLocation=${ConfigProperties.application.url}/portal.do" /></li>
       <li><portal:portalLink displayTitle="true" title="Presenter Lookup" 
       		url="${ConfigProperties.application.url}/kr-krad/lookup?methodToCall=start&dataObjectClassName=org.kuali.kd2013.dataobject.PresenterInfo&returnLocation=${ConfigProperties.application.url}/portal.do" /></li>
+   --%>
   </ul>
 
 </div>

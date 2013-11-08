@@ -11,7 +11,7 @@ import org.kuali.rice.krad.keyvalues.KeyValuesBase;
 public class SessionTypeValuesFinder extends KeyValuesBase {
 	private static final long serialVersionUID = 1L;
 
-	static List<KeyValue> VALUES = new ArrayList<KeyValue>(3);
+	static List<KeyValue> VALUES = new ArrayList<KeyValue>(5);
 	static {
 		VALUES.add( new ConcreteKeyValue("TECH", "Technical") );
 		VALUES.add( new ConcreteKeyValue("FUNC", "Functional") );
