@@ -66,12 +66,8 @@ public class ConferenceSession implements Serializable {
 	// Positioned here since properties are processed in order found
 	@NonPersistentProperty
 	@Label("Time")
-	//@UifDisplayHints({@UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_CRITERIA)})
+	@UifDisplayHints({@UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_CRITERIA)})
 	public String getDateRangeString() {
-//		SimpleDateFormat sdf = new SimpleDateFormat(TIME_FORMAT);
-//		return ((startTime != null)?sdf.format(startTime):"")
-//				+ " - "
-//				+ ((endTime != null)?sdf.format(endTime):"");
 		return StringUtils.trimToEmpty(startTime)
 				+ " - "
 				+ StringUtils.trimToEmpty(endTime);
@@ -92,7 +88,7 @@ public class ConferenceSession implements Serializable {
 	protected List<SessionPresenter> presenters = new ArrayList<SessionPresenter>();
 
 	@NonPersistentProperty
-	//@UifDisplayHints({@UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_CRITERIA)})
+	@UifDisplayHints({@UifDisplayHint(value=UifDisplayHintType.NO_LOOKUP_CRITERIA)})
 	public String getPresenterNames() {
 		StringBuilder sb = new StringBuilder();
 		if ( presenters != null ) {
@@ -103,8 +99,6 @@ public class ConferenceSession implements Serializable {
 		}
 		return sb.toString();
 	}
-
-//	protected static final String TIME_FORMAT = "hh:mm aa";
 
 	public String getSessionId() {
 		return sessionId;

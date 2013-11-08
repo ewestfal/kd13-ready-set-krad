@@ -32,7 +32,6 @@ public class PresenterInfo implements Serializable {
 	protected String institution;
 
 	@Column(length=40)
-	@Label("Title")
 	protected String title;
 
 	public String getPresenterId() {
