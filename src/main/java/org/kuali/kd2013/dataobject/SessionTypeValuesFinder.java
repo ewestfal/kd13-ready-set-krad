@@ -13,6 +13,7 @@ public class SessionTypeValuesFinder extends KeyValuesBase {
 
 	static List<KeyValue> VALUES = new ArrayList<KeyValue>(5);
 	static {
+		VALUES.add( new ConcreteKeyValue("", "") );
 		VALUES.add( new ConcreteKeyValue("TECH", "Technical") );
 		VALUES.add( new ConcreteKeyValue("FUNC", "Functional") );
 		VALUES.add( new ConcreteKeyValue("PRES", "Presentational") );
