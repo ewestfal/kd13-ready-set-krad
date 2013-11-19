@@ -7,9 +7,4 @@ import java.io.Serializable;
 public class PresenterInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	protected String presenterId;
-	protected String name;
-	protected String institution;
-	protected String title;
-
 }
