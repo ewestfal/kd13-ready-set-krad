@@ -5,7 +5,6 @@ import java.io.Serializable;
 //@Entity
 //@Table(name="KD13_CONF_SESS_T")
 public class ConferenceSession implements Serializable {
-	private static final long serialVersionUID = 1L;
 
 
 }
